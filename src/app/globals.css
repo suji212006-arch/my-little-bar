@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
+@theme {
+  --color-espresso: #321B18;
+  --color-cream: #F4EBDD;
+  --color-cream-light: #FBF7F0;
+  --color-cherry: #A51F32;
+  --color-cherry-dark: #861625;
+  --color-ochre: #D99A2B;
+  --color-ochre-light: #EDB856;
+  --color-latte: #D5B99A;
+  --color-ink: #241714;
+
+  --font-display: var(--font-display), "Playfair Display", Georgia, serif;
+  --font-body: var(--font-body), "Lora", Georgia, serif;
+  --font-handwriting: var(--font-handwriting), "Caveat", cursive;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #F4EBDD;
+  --foreground: #321B18;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F4EBDD;
+  color: #321B18;
+  font-family: var(--font-body), "Lora", Georgia, serif;
+  min-height: 100vh;
+  /* Paper grain subtle texture */
+  background-image: 
+    radial-gradient(#321B18 0.5px, transparent 0.5px),
+    radial-gradient(#D99A2B 0.4px, #F4EBDD 0.4px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+  background-color: #F4EBDD;
+  overflow-x: hidden;
+}
+
+/* Custom ink border and tactile drop shadow utilities */
+.border-ink {
+  border: 2px solid #241714;
+}
+
+.border-ink-dashed {
+  border: 2px dashed #241714;
+}
+
+.shadow-tactile {
+  box-shadow: 3px 3px 0px #241714;
+}
+
+.shadow-tactile-lg {
+  box-shadow: 5px 5px 0px #241714;
+}
+
+.shadow-tactile-sm {
+  box-shadow: 2px 2px 0px #241714;
+}
+
+.shadow-tactile-pressed {
+  box-shadow: 1px 1px 0px #241714;
+  transform: translate(2px, 2px);
+}
+
+/* Hand-drawn imperfect corners */
+.sketch-card {
+  border: 2px solid #241714;
+  border-radius: 20px 8px 18px 6px / 7px 18px 8px 19px;
+}
+
+.sketch-badge {
+  border: 1.5px solid #241714;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.sketch-button {
+  border: 2px solid #241714;
+  border-radius: 255px 25px 225px 25px/25px 225px 25px 255px;
+}
+
+/* Parisian Awning pattern */
+.awning-stripes {
+  background: repeating-linear-gradient(
+    90deg,
+    #A51F32,
+    #A51F32 32px,
+    #FBF7F0 32px,
+    #FBF7F0 64px
+  );
+}
+
+.awning-scallop {
+  background-image: radial-gradient(circle at 16px 0, transparent 16px, #241714 16.5px, #241714 18px, transparent 18.5px);
+  background-size: 32px 20px;
+}
+
+/* Vintage café custom scrollbar */
+.cafe-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #D99A2B #F4EBDD;
+}
+
+.cafe-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cafe-scrollbar::-webkit-scrollbar-track {
+  background: #F4EBDD;
+  border-radius: 6px;
+  border: 1.5px solid #241714;
+}
+
+.cafe-scrollbar::-webkit-scrollbar-thumb {
+  background: #D99A2B;
+  border-radius: 6px;
+  border: 1.5px solid #241714;
+}
+
+.cafe-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #A51F32;
+}
+
+/* Accessibility: respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
